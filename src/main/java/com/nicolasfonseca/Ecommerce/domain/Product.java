@@ -13,6 +13,7 @@ import lombok.Data;
 @AllArgsConstructor
 
 public class Product {
+    
     private Integer id;
     private String  code, name, description, image;
     private BigDecimal price;
