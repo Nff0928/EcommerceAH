@@ -14,8 +14,8 @@ public interface UserMapper {
     @Mappings(
         {
             @Mapping(source = "id", target = "id"),
-                @Mapping(source = "username", target = "firstName"),
-                @Mapping(source = "name", target = "name"),
+                @Mapping(source = "username", target = "username"),
+                @Mapping(source = "firstName", target = "firstName"),
                 @Mapping(source = "lastName", target = "lastName"),
                 @Mapping(source = "email", target = "email"),
                 @Mapping(source = "address", target = "address"),
@@ -28,7 +28,8 @@ public interface UserMapper {
 
 
     User toUser(UserEntity userEntity);
-    Iterable<User> toUsers(Iterable<UserEntity> UserEntity);
+    
+    Iterable<User> toUsers(Iterable<UserEntity> UserEntities);
 
 
     @InheritInverseConfiguration
