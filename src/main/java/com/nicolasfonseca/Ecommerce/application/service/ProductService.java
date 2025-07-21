@@ -2,6 +2,8 @@ package com.nicolasfonseca.Ecommerce.application.service;
 
 
 
+import java.time.LocalDateTime;
+
 import com.nicolasfonseca.Ecommerce.application.repository.ProductRepository;
 import com.nicolasfonseca.Ecommerce.domain.Product;
 import com.nicolasfonseca.Ecommerce.domain.User;
@@ -29,6 +31,11 @@ public class ProductService {
     }
 
     public Product saveProduct(Product product){
+        User user = new User();
+        user.setId(1);
+        product.setDateCreated(LocalDateTime.now());
+        product.setDateUpdate(LocalDateTime.now());
+        product.setUser(user);
         return productRepository.saveProduct(product);
     }
 
