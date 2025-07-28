@@ -49,7 +49,7 @@ public class ProductRepositoryImpl implements ProductRepository{
     }
 
     @Override
-    public void deleteProductId(Integer id) {
+    public void deleteProductById(Integer id) {
         
         productCrudRepository.deleteById(id);;
     }

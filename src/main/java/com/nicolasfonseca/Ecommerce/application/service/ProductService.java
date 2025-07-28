@@ -31,16 +31,27 @@ public class ProductService {
     }
 
     public Product saveProduct(Product product){
-        User user = new User();
-        user.setId(1);
-        product.setDateCreated(LocalDateTime.now());
-        product.setDateUpdate(LocalDateTime.now());
-        product.setUser(user);
-        return productRepository.saveProduct(product);
+        if(product.getId()== null){
+            User user = new User();
+            user.setId(1);
+            product.setDateCreated(LocalDateTime.now());
+            product.setDateUpdate(LocalDateTime.now());
+            product.setUser(user);
+            return productRepository.saveProduct(product);
+
+        }else{
+            Product productDB = productRepository.geProductById(product.getId());
+            product.setCode(productDB.getCode());
+            product.setUser(productDB.getUser());
+            product.setDateCreated(productDB.getDateCreated());
+            product.setDateUpdate(LocalDateTime.now());
+            return productRepository.saveProduct(product);
+        }
+        
     }
 
-    public void deleteProductId(Integer Id){
-        productRepository.deleteProductId(Id);
+    public void deleteProductById(Integer id){
+        productRepository.deleteProductById(id);
     }
 
 

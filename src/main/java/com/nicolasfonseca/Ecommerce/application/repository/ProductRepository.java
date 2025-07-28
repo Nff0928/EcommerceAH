@@ -8,7 +8,7 @@ public interface ProductRepository {
     Iterable<Product> getProductsByUser(User user);
     Product geProductById(Integer id);
     Product saveProduct(Product product);
-    void deleteProductId(Integer id);
+    void deleteProductById(Integer id);
     
 
 

@@ -3,6 +3,7 @@ package com.nicolasfonseca.Ecommerce.infrastructure.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,7 +11,7 @@ import com.nicolasfonseca.Ecommerce.application.service.ProductService;
 import com.nicolasfonseca.Ecommerce.domain.Product;
 import com.nicolasfonseca.Ecommerce.domain.User;
 
-
+import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -48,5 +49,21 @@ public class ProductController {
         return "admin/products/show";
     }
         
-    
+    @GetMapping("/edit/{id}")
+    public String editProduct(@PathVariable Integer id, Model model){
+        Product product = productService.geProductById(id);
+        log.info("Product obtenido: {}", product);
+        model.addAttribute("product", product);
+
+        return "admin/products/edit";
+
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable Integer id){
+        productService.deleteProductById(id);
+        return "redirect:/admin/products/show";
+    }
+
+
 }
