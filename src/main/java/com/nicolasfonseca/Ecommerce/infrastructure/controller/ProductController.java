@@ -1,11 +1,15 @@
 package com.nicolasfonseca.Ecommerce.infrastructure.controller;
 
+import java.io.IOException;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.nicolasfonseca.Ecommerce.application.service.ProductService;
 import com.nicolasfonseca.Ecommerce.domain.Product;
@@ -33,9 +37,9 @@ public class ProductController {
     }
     
     @PostMapping("/save-product")
-    public String saveProduct(Product product){
+    public String saveProduct(Product product, @RequestParam("img") MultipartFile multipartFile)throws IOException{
         log.info("Nombre del producto: {}", product);
-        productService.saveProduct(product);
+        productService.saveProduct(product, multipartFile);
         //return "admin/products/create";
         return "redirect:/admin";
     }
