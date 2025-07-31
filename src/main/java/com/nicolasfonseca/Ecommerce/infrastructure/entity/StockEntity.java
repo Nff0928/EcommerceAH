@@ -29,7 +29,7 @@ public class StockEntity {
     
     private Integer unitIn, unitOut, balance;
     private String  description;
-    private LocalDateTime  dateRegister;
+    private LocalDateTime  dateCreated;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)

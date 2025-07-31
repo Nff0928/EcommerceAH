@@ -13,7 +13,7 @@ public class Stock {
 
     private Integer  id, unitIn, unitOut, balance;
     private String  description;
-    private LocalDateTime  dateRegister;
+    private LocalDateTime  dateCreated;
     private Product product;
 
 
