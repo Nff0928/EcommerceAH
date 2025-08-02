@@ -4,10 +4,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.nicolasfonseca.Ecommerce.application.repository.ProductRepository;
-import com.nicolasfonseca.Ecommerce.application.repository.StockRepositry;
+
 import com.nicolasfonseca.Ecommerce.application.service.ProductService;
 import com.nicolasfonseca.Ecommerce.application.service.StockService;
 import com.nicolasfonseca.Ecommerce.application.service.UploadFile;
+import com.nicolasfonseca.Ecommerce.application.service.ValidateStock;
+import com.nicolasfonseca.Ecommerce.infrastructure.adapter.StockRepositoryImpl;
 
 @Configuration
 public class BeanConfiguration {
@@ -23,9 +25,13 @@ public class BeanConfiguration {
         return new UploadFile();
     }
 
+   @Bean
+    public StockService stockService(StockRepositoryImpl stockRepository){
+        return new StockService(stockRepository);
+    }
     @Bean
-    public StockService stockService(StockRepositry StockRepositry){
-        return new StockService((StockRepositry));
+    public ValidateStock validateStock(StockService stockService){
+        return new ValidateStock(stockService);
     }
 
 }

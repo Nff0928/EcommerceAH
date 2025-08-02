@@ -11,7 +11,7 @@ import com.nicolasfonseca.Ecommerce.domain.Stock;
 import com.nicolasfonseca.Ecommerce.infrastructure.entity.ProductEntity;
 import com.nicolasfonseca.Ecommerce.infrastructure.entity.StockEntity;
 
-@Mapper(componentModel = "string", uses = {ProductMapper.class})
+@Mapper(componentModel = "spring", uses = {ProductMapper.class})
 public interface StockMapper {
 
     @Mappings({
@@ -28,7 +28,7 @@ public interface StockMapper {
 
 
     Stock toStock(StockEntity stockEntity);
-    List<Stock> toStock(List<StockEntity> StockEntities);
+    List<Stock> toStocks(List<StockEntity> StockEntities);
     @InheritInverseConfiguration
     StockEntity toStockEntity(Stock stock);
     

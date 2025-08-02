@@ -5,10 +5,10 @@ import java.util.List;
 import com.nicolasfonseca.Ecommerce.domain.Product;
 import com.nicolasfonseca.Ecommerce.domain.Stock;
 
-public interface StockRepositry {
+public interface StockRepository {
 
     Stock saveStock(Stock stock);
-        List<Stock> geStockByProduct(Product Product);
+    List<Stock> geStockByProduct(Product Product);
 
     
     

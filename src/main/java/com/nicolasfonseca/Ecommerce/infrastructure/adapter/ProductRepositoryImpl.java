@@ -27,13 +27,13 @@ public class ProductRepositoryImpl implements ProductRepository{
     @Override
     public Iterable<Product> getProducts() {
         
-        return productMapper.toPorducts(productCrudRepository.findAll());
+        return productMapper.toProducts(productCrudRepository.findAll());
     }
 
     @Override
     public Iterable<Product> getProductsByUser(User user) {
         
-        return productMapper.toPorducts(productCrudRepository.findByUserEntity(userMapper.toUserEntity(user)));
+        return productMapper.toProducts(productCrudRepository.findByUserEntity(userMapper.toUserEntity(user)));
     }
 
     @Override
@@ -45,7 +45,7 @@ public class ProductRepositoryImpl implements ProductRepository{
     @Override
     public Product saveProduct(Product product) {
         
-        return productMapper.toProduct(productCrudRepository.save(productMapper.toPorductEntity(product)));
+        return productMapper.toProduct(productCrudRepository.save(productMapper.toProductEntity(product)));
     }
 
     @Override
